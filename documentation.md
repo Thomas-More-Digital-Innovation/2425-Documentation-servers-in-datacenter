@@ -12,7 +12,7 @@
 ## Switch datacenter
 
 
-# OPNsense
+## OPNsense
 
 
 # ProxMox
@@ -25,5 +25,19 @@
 
 ## ProxMox backup
 
+
 # SAN Dell Equallogic
 
+
+# OpenVPN
+
+# D202
+
+## Camera
+
+# VM's
+
+- Home Assistant
+- BitWarden
+- PiHole
+- Dockerhost?
