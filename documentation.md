@@ -6,6 +6,12 @@
 ## Static IP's
 
 
+## Switch D202
+
+
+## Switch datacenter
+
+
 # OPNsense
 
 
