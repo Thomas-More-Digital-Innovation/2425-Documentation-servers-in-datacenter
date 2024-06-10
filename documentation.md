@@ -5,14 +5,17 @@
 
 ## Static IP's
 
+| IP | Device | Use |
+|--- |---     |---  |
+|10.19.X.1 | OPNsense| Default gateway vlan X |
+|10.19.... | Switch datacenter| Management interface |
+|10.19.... | Switch D202| Management interface |
 
-## Switch D202
+## Public network
 
+Set using DHCP, received from Gunther. In range 172.16.
 
-## Switch datacenter
-
-
-## OPNsense
+No public or port forwarding (yet).
 
 
 # ProxMox
@@ -26,10 +29,8 @@
 ## ProxMox backup
 
 
-# SAN Dell Equallogic
+# SAN (Dell Equallogic)
 
-
-# OpenVPN
 
 # D202
 
@@ -37,6 +38,7 @@
 
 # VM's
 
+- OpenVPN?
 - Home Assistant
 - BitWarden
 - PiHole
