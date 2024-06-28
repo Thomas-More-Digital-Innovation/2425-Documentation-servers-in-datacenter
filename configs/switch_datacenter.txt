@@ -1,0 +1,385 @@
+# 
+version 7.1.045, Release 2422P01 
+# 
+sysname SIN-NET024 
+# 
+clock timezone Brussels add 01:00:00 
+clock protocol ntp 
+# 
+irf mac-address persistent timer 
+irf auto-update enable 
+undo irf link-delay 
+irf member 1 priority 1 
+irf mode normal 
+# 
+lldp global enable 
+# 
+system-working-mode StandardBridge 
+password-recovery enable 
+# 
+vlan 1 
+description Default 
+# 
+vlan 10 
+description Management 
+# 
+vlan 20 
+description Storage 
+# 
+vlan 30 
+description Services 
+# 
+vlan 40 
+description IoT 
+# 
+vlan 60 
+description Client 
+# 
+stp global enable 
+# 
+interface Bridge-Aggregation1 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+# 
+interface Bridge-Aggregation2 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+# 
+interface Bridge-Aggregation3 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+# 
+interface Bridge-Aggregation4 
+port access vlan 10 
+# 
+interface NULL0 
+# 
+interface Vlan-interface1 
+ip address 10.19.11.254 255.255.255.0 
+# 
+interface Vlan-interface10 
+ip address 10.19.10.254 255.255.255.0 
+# 
+interface FortyGigE1/0/53 
+# 
+interface FortyGigE1/0/54 
+# 
+interface GigabitEthernet1/0/1 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/2 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/3 
+description GigabitEthernet1/0/1 Interface 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/4 
+description GigabitEthernet1/0/1 Interface 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/5 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/6 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/7 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/8 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 1 
+# 
+interface GigabitEthernet1/0/9 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/10 
+description GigabitEthernet1/0/9 Interface 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/11 
+description GigabitEthernet1/0/9 Interface 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/12 
+description GigabitEthernet1/0/9 Interface 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/13 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/14 
+description GigabitEthernet1/0/13 Interface 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/15 
+description GigabitEthernet1/0/13 Interface 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/16 
+description GigabitEthernet1/0/13 Interface 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/17 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 2 
+# 
+interface GigabitEthernet1/0/18 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 2 
+# 
+interface GigabitEthernet1/0/19 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 2 
+# 
+interface GigabitEthernet1/0/20 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 2 
+# 
+interface GigabitEthernet1/0/21 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 3 
+# 
+interface GigabitEthernet1/0/22 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 3 
+# 
+interface GigabitEthernet1/0/23 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 3 
+# 
+interface GigabitEthernet1/0/24 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+port link-aggregation group 3 
+# 
+interface GigabitEthernet1/0/25 
+port access vlan 10 
+port link-aggregation group 4 
+# 
+interface GigabitEthernet1/0/26 
+port access vlan 10 
+port link-aggregation group 4 
+# 
+interface GigabitEthernet1/0/27 
+port access vlan 10 
+port link-aggregation group 4 
+# 
+interface GigabitEthernet1/0/28 
+port access vlan 10 
+port link-aggregation group 4 
+# 
+interface GigabitEthernet1/0/29 
+# 
+interface GigabitEthernet1/0/30 
+# 
+interface GigabitEthernet1/0/31 
+port access vlan 10 
+# 
+interface GigabitEthernet1/0/32 
+# 
+interface GigabitEthernet1/0/33 
+# 
+interface GigabitEthernet1/0/34 
+# 
+interface GigabitEthernet1/0/35 
+# 
+interface GigabitEthernet1/0/36 
+# 
+interface GigabitEthernet1/0/37 
+# 
+interface GigabitEthernet1/0/38 
+# 
+interface GigabitEthernet1/0/39 
+# 
+interface GigabitEthernet1/0/40 
+# 
+interface GigabitEthernet1/0/41 
+# 
+interface GigabitEthernet1/0/42 
+# 
+interface GigabitEthernet1/0/43 
+# 
+interface GigabitEthernet1/0/44 
+# 
+interface GigabitEthernet1/0/45 
+# 
+interface GigabitEthernet1/0/46 
+# 
+interface GigabitEthernet1/0/47 
+port access vlan 60 
+# 
+interface GigabitEthernet1/0/48 
+port link-type trunk 
+undo port trunk permit vlan 1 
+port trunk permit vlan 10 20 30 40 60 
+# 
+interface M-GigabitEthernet0/0/0 
+# 
+interface Ten-GigabitEthernet1/0/49 
+description GigabitEthernet1/0/25 Interface 
+port access vlan 10 
+# 
+interface Ten-GigabitEthernet1/0/50 
+description GigabitEthernet1/0/25 Interface 
+port access vlan 10 
+# 
+interface Ten-GigabitEthernet1/0/51 
+description Ten-GigabitEthernet1/0/49 Interface 
+port access vlan 10 
+# 
+interface Ten-GigabitEthernet1/0/52 
+description Ten-GigabitEthernet1/0/49 Interface 
+port access vlan 10 
+# 
+scheduler logfile size 16 
+# 
+line class aux 
+user-role network-admin 
+# 
+line class vty 
+user-role network-operator 
+# 
+line aux 0 
+user-role network-admin 
+# 
+line vty 0 4 
+authentication-mode scheme 
+user-role network-admin 
+user-role network-operator 
+protocol inbound ssh 
+idle-timeout 600 0 
+# 
+line vty 5 63 
+user-role network-operator 
+# 
+ip route-static 0.0.0.0 0 Vlan-interface1 192.168.1.1 
+# 
+snmp-agent 
+snmp-agent local-engineid 800063A28078485963B17200000001 
+snmp-agent sys-info contact comtact@nasgroup.be 
+snmp-agent sys-info location DI-DC-D003 
+snmp-agent sys-info version v3 
+# 
+ssh server enable 
+ssh user manager service-type all authentication-type password 
+# 
+ntp-service enable 
+ntp-service source Vlan-interface1 
+ntp-service unicast-server 192.168.1.1 
+ntp-service unicast-peer 192.168.1.1 
+# 
+header motd % 
+  _____ _____  ___  ____________  _____ 
+  / ___//  _/ | / / | / / ____/ __ \/ ___/ 
+  \__ \ / //  |/ /  |/ / __/ / /_/ /\__ \ 
+___/ // // /|  / /|  / /___/ _, _/___/ / 
+/____/___/_/ |_/_/ |_/_____/_/ |_|/____/   
+% 
+# 
+radius scheme system 
+user-name-format without-domain 
+# 
+domain system 
+# 
+domain default enable system 
+# 
+role name level-0 
+description Predefined level-0 role 
+# 
+role name level-1 
+description Predefined level-1 role 
+# 
+role name level-2 
+description Predefined level-2 role 
+# 
+role name level-3 
+description Predefined level-3 role 
+# 
+role name level-4 
+description Predefined level-4 role 
+# 
+role name level-5 
+description Predefined level-5 role 
+# 
+role name level-6 
+description Predefined level-6 role 
+# 
+role name level-7 
+description Predefined level-7 role 
+# 
+role name level-8 
+description Predefined level-8 role 
+# 
+role name level-9 
+description Predefined level-9 role 
+# 
+role name level-10 
+description Predefined level-10 role 
+# 
+role name level-11 
+description Predefined level-11 role 
+# 
+role name level-12 
+description Predefined level-12 role 
+# 
+role name level-13 
+description Predefined level-13 role 
+# 
+role name level-14 
+description Predefined level-14 role 
+# 
+user-group system 
+# REDACTED!
+# local-user ____
+# password hash ___
+# REDACTED!
+service-type ssh http https 
+authorization-attribute user-role network-admin 
+authorization-attribute user-role network-operator 
+# 
+ip http enable 
+# 
+return  

@@ -84,6 +84,10 @@ Specials:
 * No DHCP: 10, 20
 * Delay: 30_5s, 40_6s, 0_20s
 
+Tailscale:
+
+https://tailscale.com/kb/1097/install-opnsense
+
 ## Dell Equallogic SAN
 
 > A null modem DB9 cable is all you need to get serial access to one of these, a pretty standard piece of IT kit. Default/standard putty settings with baud rate 9600 and you’ll be in. default login/pw is grpadmin/grpadmin. Once you log in, you’ll either see that the unit is not configured yet (indicated by a prompt), or it will just drop you to a shell where you can run commands. To see current IP info there’s a show command, but I can’t remember the exact syntax off the top of my head. The help menus in there are pretty good though.
