@@ -6,12 +6,10 @@
 * [ProxMox backup server](http://10.19.10.81:8007)
 * [Switch D202](http://10.19.10.253) (only when in vlan 10)
 * [Switch Datacenter](http://10.19.10.254) (only when in vlan 10)
+* [Accesspoint D202](http://10.19.60.4)
+* [True Nas](http://10.19.10.71)
 
-# Passwords
 
-(Need to do: store these somewhere safe after we changed them.)
 
-* OPNSense: root / R1234-56
-* Proxmox nodes: root / wzUszX!Gs4
 
 
