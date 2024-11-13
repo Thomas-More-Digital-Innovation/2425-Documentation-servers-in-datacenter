@@ -15,7 +15,7 @@
 
 | IP           | Device                 | Use                    | Notes                    |
 |--------------|------------------------|------------------------|--------------------------|
-| 10.19.X.1    | OPNsense               | Default gateway vlan X | For now only in subnet 0 |
+| 10.19.X.1    | pfSsense               | Default gateway vlan X | For now only in subnet 0 |
 | 10.19.10.71  | Fedora Nas 1           | Webinterface           |                          |
 | 10.19.10.XXX | Fedora Nas 1           | iDrac                  | Not set yet              |
 | 10.19.10.81  | ProxMox backup 1       | Webinterface           |                          |
@@ -24,7 +24,8 @@
 | 10.19.10.XXX | ProxMox node 1         | iDrac                  | Not set yet              |
 | 10.19.10.102 | ProxMox node 2         | Webinterface           |                          |
 | 10.19.10.XXX | ProxMox node 2         | iDrac                  | Not set yet              |
-| 10.19.10.253 | Switch D202            | Management interface   |                          |
+| 10.19.10.252 | Switch 1 D202          | Management interface   |                          |
+| 10.19.10.253 | Switch 2 D202          | Management interface   |                          |
 | 10.19.10.254 | Switch datacenter      | Management interface   |                          |
 | 10.19.60.4   | Accesspoint DI-lokaal  | Management interface   |                          |
 
@@ -40,50 +41,52 @@ No public ports or port forwarding (yet).
 Configured using accesspoint in D202.
 
 Dino wireless / ?
-Dino IOT / d1n0
+Dino IoT / d1n0
 
 # Hardware
 
 | Type                                     | Function                         | Notes                              |
 |------------------------------------------|----------------------------------|------------------------------------|
-| HP 5700 JG894A                           | Switch datacenter                |                                    |
-| Dell R2950                               | OPNSense                         |                                    |
+| HP 5700 JG894A                           | Switch datacenter                | On loan from SIN                   |
+| Device X ?                               | pfSense                          | On loan from SIN                   |
 | Dell PowerEdge R620                      | ProxMox servers                  | 2x                                 |
-| Dell ????                                | ProxMox backup                   |                                    |
-| Dell R2950                               | TrueNas                          |                                    |
-| TP-Link TL-SG3424                        | Switch D202                      |                                    |
+| Dell ????                                | ProxMox backup                   | On loan from SIN                   |
+| Dell R2950                               | Fedora Nas                       |                                    |
 | Dell OptiPlex 7040                       | PC@TV                            | Username: DI, password: R1234-56   |
 | SuperMicro SYS-531A-IL                   | Deep learning station            | Username en passwords in bitwarden |
 
-# VM's
+# Services
 
-- OpenVPN?
-- Home Assistant
-- BitWarden
-- PiHole
-- Dockerhost?
+## VM's
+
+* fed-server (10.19.30.202): JM uses this to test stuff.
+* fed-access (10.19.30.204): Tailscale subnet forwarder
+* fed-dockerhost (10.19.30.205): Runs all docker containers
+
+## Docker containers
+
+* Portainer: For easy management
+    * [setup link](https://docs.portainer.io/start/install-ce/server/docker/linux)
+    * docker run -d -p 8000:8000 -p 9443:9443 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.4
+* Bitwarden
+* PiHole
+* Static webhosting: site with management links
 
 # Configuration
 
-## OPNSense
-
-Created vlans (https://homenetworkguy.com/how-to/configure-vlans-opnsense/).
+## pfSense
 
 DHCP settings:
-* Range: 10.19.X.1 - 10.19.X.254
+* Range: 10.19.X.10 - 10.19.X.254
+    * 10.19.30.10 - 10.19.30.200, static mapping after that
 * Default gateway: 10.19.X.1
 * DNS-server: 10.19.0.1
 * Domain name: digitalinnovation.be
 
-Specials:
-
-* No DHCP: 10, 20
-
-Tailscale:
-
-https://tailscale.com/kb/1097/install-opnsense
-
 ## Fedora NAS
+
+User: di_admin
+Password: See bitwarden
 
 Fedora server 40. Link aggregation for enp5s0 and enp9s0 to vlan 10. enp11s0 is in vlan 60, but subject to change.
 
@@ -99,7 +102,6 @@ sudo firewall-cmd --permanent --add-service=nfs
 sudo firewall-cmd --reload
 
 ```
-
 [firewall](https://www.baeldung.com/linux/firewalld-nfs-connections-settings), starting from "3.3. Allowing Supplementary Services"
 
 ```
