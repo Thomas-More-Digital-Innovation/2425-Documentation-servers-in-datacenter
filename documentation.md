@@ -82,7 +82,12 @@ Dino IoT / d1n0
     * Ports: 8001
     * [setup link](https://bitwarden.com/help/install-on-premise-linux/)
     * [other setup link]()
-* Static webhosting: site with management links
+* Static webhosting:
+    * Ports: 80
+    * ngninx with local, static html
+* KeeWeb:
+    * Ports: 8003, 4434
+    * [setup link](https://github.com/keeweb/keeweb)
 
 # Configuration
 
