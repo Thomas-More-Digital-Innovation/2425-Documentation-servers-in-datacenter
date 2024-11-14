@@ -66,10 +66,22 @@ Dino IoT / d1n0
 ## Docker containers
 
 * Portainer: For easy management
+    * Ports: 8000, 9443
     * [setup link](https://docs.portainer.io/start/install-ce/server/docker/linux)
     * docker run -d -p 8000:8000 -p 9443:9443 --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.4
+* PiHole:
+    * Ports: 8080, 53, 67
+    * [setup link](https://pimylifeup.com/pi-hole-docker/)
+    * [other setup link](https://github.com/pi-hole/docker-pi-hole)
+    * [stop stub listener port 53](https://fedoraproject.org/wiki/Changes/systemd-resolved)
+* passbolt
+    * Ports: 8002, 4433
+    * [setup link](https://www.passbolt.com/ce/docker)
+    * 
 * Bitwarden
-* PiHole
+    * Ports: 8001
+    * [setup link](https://bitwarden.com/help/install-on-premise-linux/)
+    * [other setup link]()
 * Static webhosting: site with management links
 
 # Configuration
