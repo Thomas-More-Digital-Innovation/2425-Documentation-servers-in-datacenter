@@ -20,12 +20,12 @@
 | 10.19.10.62  | HP Server_2            |                        |                          |
 | 10.19.10.63  | Deep learning          |                        |                          |
 | 10.19.10.81  | ProxMox backup 1       | Webinterface           |                          |
-| 10.19.10.XXX | ProxMox backup 1       | iDrac                  | Not set yet              |
 | 10.19.10.101 | ProxMox node 1         | Webinterface           |                          |
-| 10.19.10.XXX | ProxMox node 1         | iDrac                  | Not set yet              |
+| 10.19.10.240 | ProxMox node 1         | iDrac                  | Not set yet              |
 | 10.19.10.102 | ProxMox node 2         | Webinterface           |                          |
-| 10.19.10.XXX | ProxMox node 2         | iDrac                  | Not set yet              |
+| 10.19.10.241 | ProxMox node 2         | iDrac                  | Not set yet              |
 | 10.19.10.110 | TrueNas                | Management interface   |                          |
+| 10.19.10.242 | TrueNas                | iDrac                  | Not set yet              |
 | 10.19.10.252 | Switch 1 D202          | Management interface   |                          |
 | 10.19.10.253 | Switch 2 D202          | Management interface   |                          |
 | 10.19.10.254 | Switch datacenter      | Management interface   |                          |
@@ -55,6 +55,12 @@ Dino IoT / d1n0
 | Dell ????                                | ProxMox backup                   | On loan from SIN                   |
 | Dell OptiPlex 7040                       | PC@TV                            | Username: DI, password: R1234-56   |
 | SuperMicro SYS-531A-IL                   | Deep learning station            | Username en passwords in bitwarden |
+
+## HP 5700 JG894A
+
+Connectie via console, putty, 9600 baud. system-view voor advanced mode, geen passwd.
+
+SSH niet helemaal ingesteld (todo)
 
 # Services
 
