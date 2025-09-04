@@ -120,30 +120,3 @@ DHCP settings:
 * DNS-server: 10.19.0.1
 * Domain name: digitalinnovation.be
 
-## Fedora NAS
-
-User: di_admin
-Password: See bitwarden
-
-Fedora server 40. Link aggregation for enp5s0 and enp9s0 to vlan 10. enp11s0 is in vlan 60, but subject to change.
-
-[NFS-share setup](https://docs.stg.fedoraproject.org/en-US/fedora-server/services/filesharing-nfs-installation/)
-
-```
-sudo adduser -c 'nfs pseudo user' -M  -r  -s /sbin/nologin  nfs --> did not work, only works with a lot of chown -R 777 nfs
-
-sudo mkdir -p /srv/nfs/{iso,vms}
-sudo chown  -R  nfs.nfs  /srv/nfs/*
-
-sudo firewall-cmd --permanent --add-service=nfs
-sudo firewall-cmd --reload
-
-```
-[firewall](https://www.baeldung.com/linux/firewalld-nfs-connections-settings), starting from "3.3. Allowing Supplementary Services"
-
-```
-firewall-cmd --permanent --add-service=rpc-bind --add-service=mountd
-firewall-cmd --permanent --add-port=32767/tcp --add-port=32767/udp --add-port=32765/tcp --add-port=32765/udp
-```
-
-
