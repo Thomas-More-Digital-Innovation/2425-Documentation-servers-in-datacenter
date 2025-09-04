@@ -49,6 +49,7 @@ Dino IoT / d1n0
 
 | Type                                     | Function                         | Notes                              |
 |------------------------------------------|----------------------------------|------------------------------------|
+| Huawei S5720-28t                         | Switch datacenter                | On loan from SIN                   |
 | HP 5700 JG894A                           | Switch datacenter                | On loan from SIN                   |
 | Device X ?                               | pfSense                          | On loan from SIN                   |
 | Dell PowerEdge R620                      | ProxMox servers                  | 2x                                 |
@@ -58,12 +59,103 @@ Dino IoT / d1n0
 
 ## HP 5700 JG894A
 
-Connectie via console, putty, 9600 baud. system-view voor advanced mode, geen passwd.
+* Connect using console, putty, 9600 baud. 
+* [link](https://support.huawei.com/enterprise/en/doc/EDOC1000178166/3168580a/restoring-the-bootrom-password)
+* Reset console password using ctrl-B -> default Bootrom password is Admin@huawei.com
+* Use menu to clear console password
+* Reboot
+
+```
+reset saved-configuration
+system-view
+```
+* [link](https://www.manualslib.com/manual/1737124/Huawei-S5720i-Si-Series.html?page=11#manual)
+* [link](https://support.huawei.com/enterprise/en/doc/EDOC1000178170/838c65e3/configuring-a-primary-ip-address-for-an-interface)
+* [link](https://support.huawei.com/enterprise/en/doc/EDOC1100325914/381ea229/vlan-mapping-configuration-commands-)
+* [link](https://support.huawei.com/enterprise/en/doc/EDOC1000178166/dbec5988/configuring-a-web-user-and-logging-in-to-the-web-system)
+
+
+```
+interface Vlanif 10
+ip address 10.19.10.254 255.255.255.0
+
+interface GigabitEthernet 1/0/23
+port default vlan 10
+
+interface GigabitEthernet 1/0/13
+port default vlan 10
+
+interface GigabitEthernet 1/0/15
+port default vlan 60
+
+
+interface GigabitEthernet 1/0/24
+port link-type trunk
+port trunk allow-pass vlan 10 20 30 40 60
+
+aaa
+local-user jm password irreversible-cipher *%W!#wD2rXh0pDWmE
+local-user jm service-type http <- Not working!!!!
+local-user jm service-type ssh
+local-user jm privilege level 15
+
+local-user jm2 password irreversible-cipher *%W!#wD2rXh0pDWmE
+local-user jm2 service-type http
+local-user jm2 service-type ssh
+local-user jm2 privilege level 15
+
+user-interface vty 0 4
+ authentication-mode aaa
+ protocol inbound ssh
+
+rsa local-key-pair create
+
+```
+
+* [link](https://support.huawei.com/enterprise/en/doc/EDOC1000178168/7abaffd5/link-aggregation-configuration)
+
+```
+interface eth-trunk 1
+port trunk allow-pass vlan 10 20 30 40 60
+
+interface GigabitEthernet 1/0/1
+eth-trunk 1
+
+interface GigabitEthernet 1/0/3
+eth-trunk 1
+
+interface GigabitEthernet 1/0/5
+eth-trunk 1
+
+interface GigabitEthernet 1/0/7
+eth-trunk 1
+
+interface eth-trunk 2
+port trunk allow-pass vlan 10 20 30 40 60
+interface GigabitEthernet 1/0/2
+eth-trunk 2
+
+interface GigabitEthernet 1/0/4
+eth-trunk 2
+
+interface GigabitEthernet 1/0/6
+eth-trunk 2
+
+interface GigabitEthernet 1/0/8
+eth-trunk 2
+```
+
+```
+stelnet server enable
+
+system-view voor advanced mode, geen passwd.
 
 SSH connection string:
 
 ```
-ssh -oKexAlgorithms=+diffie-hellman-group1-sha1   -oCiphers=+aes128-cbc   -oHostKeyAlgorithms=+ssh-rsa   -oPubkeyAcceptedAlgorithms=+ssh-rsa   -oMACs=+hmac-sha1,hmac-md5   admin@10.19.10.254
+ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 jm@10.19.10.254
+
+  -oCiphers=+aes128-cbc   -oHostKeyAlgorithms=+ssh-rsa   -oPubkeyAcceptedAlgorithms=+ssh-rsa   -oMACs=+hmac-sha1,hmac-md5   
 ```
 
 'Advanced' view:

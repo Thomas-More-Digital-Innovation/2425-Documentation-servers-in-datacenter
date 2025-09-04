@@ -1,7 +1,7 @@
 #
  version 7.1.045, Release 2422P01
 #
- sysname DI-DC-HP
+ sysname DI-DC
 #
  clock timezone Brussels add 01:00:00
  clock protocol ntp
