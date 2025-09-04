@@ -60,7 +60,17 @@ Dino IoT / d1n0
 
 Connectie via console, putty, 9600 baud. system-view voor advanced mode, geen passwd.
 
-SSH niet helemaal ingesteld (todo)
+SSH connection string:
+
+```
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1   -oCiphers=+aes128-cbc   -oHostKeyAlgorithms=+ssh-rsa   -oPubkeyAcceptedAlgorithms=+ssh-rsa   -oMACs=+hmac-sha1,hmac-md5   admin@10.19.10.254
+```
+
+'Advanced' view:
+
+```
+system-view
+```
 
 # Services
 
